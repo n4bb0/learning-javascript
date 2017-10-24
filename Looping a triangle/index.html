@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>esercise</title>
+
+    <style>
+      .hashtagLine {
+        color: red;
+        font-weight: bold;
+        padding-left: 20px;
+        letter-spacing: 5px;
+        margin: 0;
+      }
+    </style>
+
+  </head>
+  <body>
+    <h1>Looping a triangle</h1>
+    <p>Write a loop that makes seven calls to console.log to output the following
+      triangle (personal extra: make it visible on the page):</p>
+    <p>#<br>##<br>###<br>####<br>#####<br>######<br>#######</p>
+
+    <p>Exercise below</p>
+    <p id="exercise"><p>
+
+    <p>My code:</p>
+    <pre><code>
+      var exercise = document.querySelector('#exercise')
+      var line = '';
+
+      for (var i = 0; i < 7; i++) {
+        line += '#';
+        console.log(line);
+        createPara ();
+      }
+
+      function createPara() {
+        var para = document.createElement('p');
+        para.setAttribute('class', 'hashtagLine')
+        para.textContent = line;
+        exercise.appendChild(para);
+      }
+      </code></pre>
+    <script>
+      var exercise = document.querySelector('#exercise')
+      var line = '';
+
+      for (var i = 0; i < 7; i++) {
+        line += '#';
+        console.log(line);
+        createPara ();
+      }
+
+      function createPara() {
+        var para = document.createElement('p');
+        para.setAttribute('class', 'hashtagLine')
+        para.textContent = line;
+        exercise.appendChild(para);
+      }
+    </script>
+  </body>
+</html>
