@@ -5,11 +5,9 @@
     <title>esercise</title>
 
     <style>
-      .hashtagLine {
+      #exercise {
         color: red;
         font-weight: bold;
-        letter-spacing: 5px;
-        margin: 0;
       }
     </style>
 
@@ -26,38 +24,24 @@
 
     <p>My code:</p>
     <pre><code>
-      var exercise = document.querySelector('#exercise')
+      var target = document.getElementById('exercise');
       var line = '';
 
       for (var i = 0; i < 7; i++) {
         line += '#';
         console.log(line);
-        createPara ();
-      }
-
-      function createPara() {
-        var para = document.createElement('p');
-        para.setAttribute('class', 'hashtagLine')
-        para.textContent = line;
-        exercise.appendChild(para);
-      }
-      </code></pre>
+        target.innerHTML += line + '&lt;br&gt;';
+      };
+    </code></pre>
     <script>
-      var exercise = document.querySelector('#exercise')
+      var target = document.getElementById('exercise');
       var line = '';
 
       for (var i = 0; i < 7; i++) {
         line += '#';
         console.log(line);
-        createPara ();
-      }
-
-      function createPara() {
-        var para = document.createElement('p');
-        para.setAttribute('class', 'hashtagLine')
-        para.textContent = line;
-        exercise.appendChild(para);
-      }
+        target.innerHTML += line + '<br>';
+      };
     </script>
   </body>
 </html>
