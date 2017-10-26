@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Chess board</title>
+    <style>
+      #exercise {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Chess board</h1>
+    <p>Exercise from Eloquent JavaScript</p>
+    <p>Write a program that creates a string that represents an 8x8 grid, using
+      newline characters to separate lines. At each position of the grid there
+      is either a space or a # character. The characters should form a chess
+      board. Define a variable size = 8 and change the program so that it works for any size.
+      Pass the string to console.log. Extra: display it on page.<br>
+      The grid should look like this:</p>
+    <pre>
+       # # # #
+      # # # #
+       # # # #
+      # # # #
+       # # # #
+      # # # #
+       # # # #
+      # # # # </pre>
+
+    <p>Exercise below</p>
+    <pre><p id="exercise"></p></pre>
+
+    <p>My code:</p>
+    <pre><code>
+      // html
+      &lt;pre&gt;&lt;p id="exercise"&gt;&lt;/p&gt;&lt;/pre&gt;
+
+      // Js
+      &lt;script&gt;
+        var exercise = document.getElementById('exercise');
+        var size = 8;
+        var output = '';
+
+        for (var i = 1; i &lt;= size; i++ ){    // i is a row-counter
+          var line = '';
+          for (var j = 1; j &lt;= size; j++){   // j is a column-counter
+            var cell = ' ';
+            if ((i + j) % 2 === 0) {
+              cell = '#';
+            }
+            line += cell;
+          }
+          output += line + '\n';
+        }
+        console.log(output);
+        exercise.textContent = output;
+      &lt;/script&gt;
+    </code></pre>
+
+
+    <script>
+      var exercise = document.getElementById('exercise');
+      var size = 8;
+      var output = '';
+
+      for (var i = 1; i <= size; i++ ){    // i is a row-counter
+        var line = '';
+        for (var j = 1; j <= size; j++){   // j is a column-counter
+          var cell = ' ';
+          if ((i + j) % 2 === 0) {
+            cell = '#';
+          }
+          line += cell;
+        }
+        output += line + '\n';
+      }
+      console.log(output);
+      exercise.textContent = output;
+    </script>
+
+  </body>
+</html>
