@@ -1,0 +1,25 @@
+body {
+  width: 640px;
+  margin: auto;
+  background-color: rgba(0,0,0,0);
+}
+
+h1 {
+ font-family: 'Merriweather', serif;
+ font-size: 40px;
+ text-align: center;
+}
+
+.bigImg {
+  width: 640px;
+  height: 480px;
+  display: block;
+}
+
+.thumbnails img {
+  width: 20%;
+  margin: 0 0;
+  float: left;
+  display: block;
+  cursor: pointer;
+}
