@@ -42,12 +42,12 @@
         var size = 8;
         var output = '';
 
-        for (var i = 1; i &lt;= size; i++ ){    // i is a row-counter
+        for (var j = 1; j &lt;= size; j++ ){    // j is a row-counter (vertical)
           var line = '';
-          for (var j = 1; j &lt;= size; j++){   // j is a column-counter
-            var cell = ' ';
+          for (var i = 1; i &lt;= size; i++){   // i is a column-counter (horizontal)
+            var cell = '#';
             if ((i + j) % 2 === 0) {
-              cell = '#';
+              cell = ' ';
             }
             line += cell;
           }
@@ -64,12 +64,12 @@
       var size = 8;
       var output = '';
 
-      for (var i = 1; i <= size; i++ ){    // i is a row-counter
+      for (var j = 1; j <= size; j++ ){    // j is a row-counter (vertical)
         var line = '';
-        for (var j = 1; j <= size; j++){   // j is a column-counter
-          var cell = ' ';
+        for (var i = 1; i <= size; i++){   // i is a column-counter (horizontal)
+          var cell = '#';
           if ((i + j) % 2 === 0) {
-            cell = '#';
+            cell = ' ';
           }
           line += cell;
         }
