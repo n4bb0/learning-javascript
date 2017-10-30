@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Minimum - function</title>
+    <style>
+      label {
+        display: inline-block;
+        width: 165px;
+      }
+
+      .numField {
+        display: inline-block;
+        width: 65px;
+      }
+
+      .submitBtn {
+        position: relative;
+        left: 270px;
+        width: 65px;
+      }
+
+      #result {
+        display: inline-block;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Minimum - function</h1>
+    <p>Exercise from Eloquent JavaScript</p>
+    <p>Write a function that takes two arguments and returns their minimum.</p>
+    <p>--- Exercise below ---</p>
+
+    <div class="form">
+      <label for="firstNum" class="label">Enter the first number</label>
+      <input type="text" id="firstNum" class="numField">
+      <br><br>
+      <label for="secondNum" class="label">Enter the second number</label>
+      <input type="text" id="secondNum" class="numField">
+      <br>
+      <input type="submit" value="submit" class="submitBtn">
+    </div>
+    <p id="result"></p>
+
+    <p>My code:</p>
+    <pre><code>
+      // html
+      &lt;div class="form"&gt;
+        &lt;label for="firstNum" class="label"&gt;Enter the first number&lt;/label&gt;
+        &lt;input type="text" id="firstNum" class="numField"&gt;
+        &lt;br&gt;&lt;br&gt;
+        &lt;label for="secondNum" class="label"&gt;Enter the second number&lt;/label&gt;
+        &lt;input type="text" id="secondNum" class="numField"&gt;
+        &lt;br&gt;
+        &lt;input type="submit" value="submit" class="submitBtn"&gt;
+      &lt;/div&gt;
+      &lt;p id="result"&gt;&lt;/p&gt;
+
+
+      // javascript
+      &lt;script&gt;
+        var field1 = document.getElementById('firstNum');
+        var field2 = document.getElementById('secondNum');
+        var btn = document.querySelector('.submitBtn');
+        var result = document.getElementById('result');
+
+        function minimum (a, b) {
+          if (a &lt; b) {
+            return a;
+          } else {
+            return b;
+          }
+        }
+
+        btn.onclick = function() {
+          var num1 = Number(field1.value);
+          var num2 = Number(field2.value);
+          if (isNaN(num1) || isNaN(num2)){
+            result.style.backgroundColor = '';
+            result.textContent = 'Please submit two numbers';
+          } else {
+            result.style.backgroundColor = 'rgba(255,0,0,0.5)';
+            result.textContent = minimum(num1, num2) + ' is the smallest number';
+          }
+        }
+      &lt;/script&gt;
+
+    </code></pre>
+
+
+    <script>
+      var field1 = document.getElementById('firstNum');
+      var field2 = document.getElementById('secondNum');
+      var btn = document.querySelector('.submitBtn');
+      var result = document.getElementById('result');
+
+      function minimum (a, b) {
+        if (a < b) {
+          return a;
+        } else {
+          return b;
+        }
+      }
+
+      btn.onclick = function() {
+        var num1 = Number(field1.value);
+        var num2 = Number(field2.value);
+        if (isNaN(num1) || isNaN(num2)){
+          result.style.backgroundColor = '';
+          result.textContent = 'Please submit two numbers';
+        } else {
+          result.style.backgroundColor = 'rgba(255,0,0,0.5)';
+          result.textContent = minimum(num1, num2) + ' is the smallest number';
+        }
+      }
+    </script>
+
+  </body>
+</html>
