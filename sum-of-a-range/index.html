@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The sum of a range</title>
+    <style>
+      .numField {
+        width: 50px;
+        margin-right: 40px;
+      }
+
+      label {
+        display: inline-block;
+        width: 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>The sum of a range</h1>
+    <p>Exercise from Eloquent JavaScript</p>
+    <p>Write a range function that takes three arguments, start, end and step, and
+      returns an array containing all the numbers from start up to (and including)
+      end, using step to count. <br>
+      Next, write a sum function that takes an array of numbers and returns
+      the sum of these numbers.<br>
+      Personal extra: display this exercise in the document</p>
+    <p>-- Exercise below --</p>
+
+    <div class="form">
+      <label for="startNum">From:</label>
+      <input type="text" class="numField" id="startNum">
+      <label for="endNum">To:</label>
+      <input type="text" class="numField" id="endNum">
+      <br><br>
+      <label for="step">Step:</label>
+      <input type="text" class="numField" id="step"><span>If no step is given or if step = 0, then the function will use a default step = 1 or step = -1</span>
+      <br><br>
+      <input type="button" class="btn" value="submit">
+    </div>
+    <div id="solution"></div>
+
+    <p>My code:</p>
+    <pre><code>  <!-- replace < with &lt; and > with &gt; -->
+      // html
+      &lt;div class="form"&gt;
+        &lt;label for="startNum"&gt;From:&lt;/label&gt;
+        &lt;input type="text" class="numField" id="startNum"&gt;
+        &lt;label for="endNum"&gt;To:&lt;/label&gt;
+        &lt;input type="text" class="numField" id="endNum"&gt;
+        &lt;br&gt;&lt;br&gt;
+        &lt;label for="step"&gt;Step:&lt;/label&gt;
+        &lt;input type="text" class="numField" id="step"&gt;&lt;span&gt;If no step is given or if step = 0, then the function will use a default step = 1 or step = -1&lt;/span&gt;
+        &lt;br&gt;&lt;br&gt;
+        &lt;input type="button" class="btn" value="submit"&gt;
+      &lt;/div&gt;
+      &lt;div id="solution"&gt;&lt;/div&gt;
+
+      // javascript
+      &lt;script&gt;
+        // range function
+        function range(start, end, step){
+          var rangeArray = [];
+          if (step === undefined) {
+            if (start &lt;= end) {
+              step = 1;
+            } else {
+              step = -1;
+            }
+          }
+          if (start &lt;= end) {
+            for (var i = start; i &lt; end + 1; i += step) {
+              rangeArray.push(i);
+            }
+          } else {
+            for (var i = start; i &gt;= end; i += step) {
+              rangeArray.push(i);
+            }
+          }
+          return rangeArray;
+        }
+
+        // sum function
+        function sum(array){
+          var total = 0;
+          for (var i = 0; i &lt; array.length; i++) {
+            total += array[i];
+          }
+          return total;
+        }
+
+        // DOM
+        var startNumField = document.getElementById('startNum');
+        var endNumField = document.getElementById('endNum');
+        var stepField = document.getElementById('step');
+        var btn = document.querySelector('.btn');
+        var solution = document.getElementById('solution');
+
+        var rangeResult = document.createElement('p');
+        var sumResult = document.createElement('p');
+
+        btn.onclick = function() {
+          var startV = Number(startNumField.value);
+          var endV = Number(endNumField.value);
+          var stepV = Number(stepField.value);
+
+          if (stepV === 0) {   // I could've added this in the range function, but wanted the function to be cleaner
+            if (startV &lt;= endV) {
+              stepV = 1;
+            } else {
+              stepV = -1;
+            }
+          }
+          if(isNaN(startV) || isNaN(endV) || isNaN(stepV)) {
+            rangeResult.textContent = 'Error, you must insert three numbers';
+            sumResult.textContent = '';
+          } else if (startV &lt; endV &amp;&amp; stepV &lt; 0) {
+            rangeResult.textContent = 'Error, given your "from" number and "to" number, step must be &gt; 0';
+            sumResult.textContent = '';
+          } else if (startV &gt; endV &amp;&amp; stepV &gt; 0){
+            rangeResult.textContent = 'Error, given your "from" number and "to" number, step must be &lt; 0';
+            sumResult.textContent = '';
+          } else {
+            rangeResult.textContent = 'Number sequence: ' + range(startV, endV, stepV).join(', ');
+            sumResult.textContent = 'Sum of all the numbers in your sequence: ' + sum(range(startV, endV, stepV));
+          }
+          solution.appendChild(rangeResult);
+          solution.appendChild(sumResult);
+        }
+      &lt;/script&gt;
+    </code></pre>
+
+
+    <script>
+      // range function
+      function range(start, end, step){
+        var rangeArray = [];
+        if (step === undefined) {
+          if (start <= end) {
+            step = 1;
+          } else {
+            step = -1;
+          }
+        }
+        if (start <= end) {
+          for (var i = start; i < end + 1; i += step) {
+            rangeArray.push(i);
+          }
+        } else {
+          for (var i = start; i >= end; i += step) {
+            rangeArray.push(i);
+          }
+        }
+        return rangeArray;
+      }
+
+      // sum function
+      function sum(array){
+        var total = 0;
+        for (var i = 0; i < array.length; i++) {
+          total += array[i];
+        }
+        return total;
+      }
+
+      // DOM
+      var startNumField = document.getElementById('startNum');
+      var endNumField = document.getElementById('endNum');
+      var stepField = document.getElementById('step');
+      var btn = document.querySelector('.btn');
+      var solution = document.getElementById('solution');
+
+      var rangeResult = document.createElement('p');
+      var sumResult = document.createElement('p');
+
+      btn.onclick = function() {
+        var startV = Number(startNumField.value);
+        var endV = Number(endNumField.value);
+        var stepV = Number(stepField.value);
+
+        if (stepV === 0) {   // I could've added this in the range function, but wanted the function to be cleaner
+          if (startV <= endV) {
+            stepV = 1;
+          } else {
+            stepV = -1;
+          }
+        }
+        if(isNaN(startV) || isNaN(endV) || isNaN(stepV)) {
+          rangeResult.textContent = 'Error, you must insert three numbers';
+          sumResult.textContent = '';
+        } else if (startV < endV && stepV < 0) {
+          rangeResult.textContent = 'Error, given your "from" number and "to" number, step must be > 0';
+          sumResult.textContent = '';
+        } else if (startV > endV && stepV > 0){
+          rangeResult.textContent = 'Error, given your "from" number and "to" number, step must be < 0';
+          sumResult.textContent = '';
+        } else {
+          rangeResult.textContent = 'Number sequence: ' + range(startV, endV, stepV).join(', ');
+          sumResult.textContent = 'Sum of all the numbers in your sequence: ' + sum(range(startV, endV, stepV));
+        }
+        solution.appendChild(rangeResult);
+        solution.appendChild(sumResult);
+      }
+    </script>
+
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Bean counting</title>
+    <style>
+      label {
+        display: inline-block;
+        width: 120px;
+      }
+
+      #charInput {
+        width: 1em;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Bean counting</h1>
+    <p>Exercise from Eloquent JavaScript</p>
+    <p>Write a function called countChar that takes a string and a character to
+      be counted as arguments, and returns a number that indicates how many times
+    the character is in the string (the function is case-sensitive: b and B are
+    different characters)</p>
+    <p>-- Exercise below --</p>
+    <div class="form">
+      <label for="stringInput">Enter a string</label>
+      <input type="text" id="stringInput">
+      <br><br>
+      <label for="charInput">Enter a character</label>
+      <input type="text" id="charInput">
+      <br><br>
+      <input type="button" id="submitBtn" value="submit">
+    </div>
+    <div id="solution"></div>
+
+    <p>My code:</p>
+    <pre><code>  <!-- replace < with &lt; and > with &gt; -->
+      // html
+      &lt;div class="form"&gt;
+        &lt;label for="stringInput"&gt;Enter a string&lt;/label&gt;
+        &lt;input type="text" id="stringInput"&gt;
+        &lt;br&gt;&lt;br&gt;
+        &lt;label for="charInput"&gt;Enter a character&lt;/label&gt;
+        &lt;input type="text" id="charInput"&gt;
+        &lt;br&gt;&lt;br&gt;
+        &lt;input type="button" id="submitBtn" value="submit"&gt;
+      &lt;/div&gt;
+      &lt;div id="solution"&gt;&lt;/div&gt;
+
+      // javascript
+      &lt;script&gt;
+        function countChar(string, char) {
+          var count = 0;
+          for (var i = 0; i &lt; string.length; i++) {
+            if (string.charAt(i) === char) {
+              count += 1;
+            }
+          }
+          return count;
+        }
+
+        var stringField = document.getElementById('stringInput');
+        var charField = document.getElementById('charInput');
+        var btn = document.getElementById('submitBtn')
+        var solution = document.getElementById('solution');
+
+
+        var result = document.createElement('p');
+        var error = document.createElement('p');
+
+        btn.onclick = function() {
+          var stringInput = stringField.value;
+          var charInput = charField.value;
+
+          if (charInput.length !== 1) {  //check if charInput is valid
+            result.textContent = 'Please enter a single character';
+            solution.appendChild(result);
+            solution.style.backgroundColor = 'rgba(255,0,0,0.5)';
+          } else {
+              if (countChar(stringInput, charInput) === 1) {
+                result.textContent = 'In the string \"' + stringInput + '\" there is ' + countChar(stringInput, charInput) + ' \"' + charInput +'\"';
+              } else if (countChar(stringInput, charInput) === 0) {
+                result.textContent = 'In the string \"' + stringInput + '\" there are no' + ' \"' + charInput +'\"';
+              } else {
+                result.textContent = 'In the string \"' + stringInput + '\" there are ' + countChar(stringInput, charInput) + ' \"' + charInput +'\"';
+              }
+              solution.appendChild(result);
+              solution.style.backgroundColor = 'rgba(0,255,0,0.5)';
+            }
+          }
+      &lt;/script&gt;
+    </code></pre>
+
+    <script>
+      function countChar(string, char) {
+        var count = 0;
+        for (var i = 0; i < string.length; i++) {
+          if (string.charAt(i) === char) {
+            count += 1;
+          }
+        }
+        return count;
+      }
+
+      var stringField = document.getElementById('stringInput');
+      var charField = document.getElementById('charInput');
+      var btn = document.getElementById('submitBtn')
+      var solution = document.getElementById('solution');
+
+
+      var result = document.createElement('p');
+
+      btn.onclick = function() {
+        var stringInput = stringField.value;
+        var charInput = charField.value;
+
+        if (charInput.length !== 1) {  //check if charInput is valid
+          result.textContent = 'Please enter a single character';
+          solution.appendChild(result);
+          solution.style.backgroundColor = 'rgba(255,0,0,0.5)';
+        } else {
+            if (countChar(stringInput, charInput) === 1) {
+              result.textContent = 'In the string \"' + stringInput + '\" there is ' + countChar(stringInput, charInput) + ' \"' + charInput +'\"';
+            } else if (countChar(stringInput, charInput) === 0) {
+              result.textContent = 'In the string \"' + stringInput + '\" there are no' + ' \"' + charInput +'\"';
+            } else {
+              result.textContent = 'In the string \"' + stringInput + '\" there are ' + countChar(stringInput, charInput) + ' \"' + charInput +'\"';
+            }
+            solution.appendChild(result);
+            solution.style.backgroundColor = 'rgba(0,255,0,0.5)';
+          }
+        }
+    </script>
+
+  </body>
+</html>

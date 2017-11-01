@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Even or odd</title>
+    <style>
+      #inputNmb {
+        display: inline-block;
+        width: 40px;
+        margin: 0 10px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>Even or odd</h1>
+    <h4>Using a recursive function</h4>
+    <p>Exercise from Eloquent JavaScript</p>
+    <p>Define a recursive function isEven that accept a number parameter and
+      return a Boolean. <br>
+      The logic should be: zero is even, one is odd, for any other number N,
+      its evenness is the same as N - 2.<br>
+      Make it work with negative numbers too</p>
+    <p>-- Exercise below --</p>
+    <div class="form">
+      <label for="inputNmb">Enter an integer number between -10000 and 10000</label>
+      <input type="text" id="inputNmb">
+      <input type="submit" value="submit" id="submitNmb">
+    </div>
+    <p id="result"></p>
+
+    <p>My code:</p>
+    <pre><code>  <!-- replace < with &lt; and > with &gt; -->
+      // html
+      &lt;div class="form"&gt;
+        &lt;label for="inputNmb"&gt;Enter an integer number between -10000 and 10000&lt;/label&gt;
+        &lt;input type="text" id="inputNmb"&gt;
+        &lt;input type="submit" value="submit" id="submitNmb"&gt;
+      &lt;/div&gt;
+      &lt;p id="result"&gt;&lt;/p&gt;
+
+      // javascript
+      &lt;script&gt;
+        // number is even. true / false
+       function isEven(number) {
+         var absNumber = Math.abs(number)
+         if (absNumber === 0){
+           return true;
+         } else if (absNumber === 1) {
+           return false;
+         } else {
+           return isEven(absNumber - 2);
+         }
+       }
+
+       var nmb = document.getElementById('inputNmb');
+       var btn = document.getElementById('submitNmb');
+       var result = document.getElementById('result');
+
+       btn.onclick = function() {
+         var userNmb = Number(nmb.value);
+         if (isNaN(userNmb) || !Number.isInteger(userNmb) || userNmb &gt; 10000 || userNmb &lt; -10000) {  // check if the number is valid
+           result.textContent = 'Please enter a valid number';
+         } else {
+           if (isEven(userNmb)) {
+             result.textContent = userNmb + ' is even';
+           } else {
+             result.textContent = userNmb + ' is odd';
+           }
+         }
+       }
+      &lt;/script&gt;
+    </code></pre>
+
+
+    <script>
+    // number is even. true / false
+     function isEven(number) {
+       var absNumber = Math.abs(number)
+       if (absNumber === 0){
+         return true;
+       } else if (absNumber === 1) {
+         return false;
+       } else {
+         return isEven(absNumber - 2);
+       }
+     }
+
+     var nmb = document.getElementById('inputNmb');
+     var btn = document.getElementById('submitNmb');
+     var result = document.getElementById('result');
+
+     btn.onclick = function() {
+       var userNmb = Number(nmb.value);
+       if (isNaN(userNmb) || !Number.isInteger(userNmb) || userNmb > 10000 || userNmb < -10000) {  // check if the number is valid
+         result.textContent = 'Please enter a valid number';
+       } else {
+         if (isEven(userNmb)) {
+           result.textContent = userNmb + ' is even';
+         } else {
+           result.textContent = userNmb + ' is odd';
+         }
+       }
+     }
+    </script>
+
+  </body>
+</html>
