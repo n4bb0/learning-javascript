@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Reversing an array</title>
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Reversing an array</h1>
+    <p>Exercise from Eloquent JavaScript</p>
+    <p>write two functions, reverseArray and reverseArrayInPlace.<br>
+      The first, reverseArray, takes an array as argument and produces a new
+      array that has the same elements in the inverse order.<br>
+      The second, reverseArrayInPlace modifies the array given as argument in
+      order to reverse its elements. <br>
+      Neither may use the standard reverse method.</p>
+    <p>-- Exercise below --</p>
+
+    <div id="solution"></div>
+
+    <p>My code:</p>
+    <pre><code>  <!-- replace < with &lt; and > with &gt; -->
+      // return a new array which is the first one reversed
+      function reverseArray(array) {
+        let reversedArray = [];
+        for (let i = 0; i &lt; array.length; i++) {
+          reversedArray.unshift(array[i]);
+        }
+        return reversedArray;
+      }
+
+      // return the same array reversed
+      function reverseArrayInPlace(array) {
+        for(let i = 0; i &lt; array.length; i++) {
+          let a = array.pop();
+          array.splice(i, 0, a);
+        }
+        return array;
+      }
+
+      /* another solution
+      function reverseArrayInPlace(array) {
+        for(let i = 0; i &lt; Math.floor(array.length / 2); i ++){
+          let a = array[i];
+          array[i] = array[array.length - 1 - i];
+          array[array.length - 1 - i] = a;
+        }
+        return array
+      }*/
+    </code></pre>
+
+
+    <script>
+      // return a new array which is the first one reversed
+      function reverseArray(array) {
+        let reversedArray = [];
+        for (let i = 0; i < array.length; i++) {
+          reversedArray.unshift(array[i]);
+        }
+        return reversedArray;
+      }
+
+      // return the same array reversed
+      function reverseArrayInPlace(array) {
+        for(let i = 0; i < array.length; i++) {
+          let a = array.pop();
+          array.splice(i, 0, a);
+        }
+        return array;
+      }
+
+      /* another solution
+      function reverseArrayInPlace(array) {
+        for(let i = 0; i < Math.floor(array.length / 2); i ++){
+          let a = array[i];
+          array[i] = array[array.length - 1 - i];
+          array[array.length - 1 - i] = a;
+        }
+        return array
+      }*/
+    </script>
+  </body>
+</html>
