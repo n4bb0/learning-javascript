@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Deep comparison</title>
+    <style>
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Deep comparison</h1>
+    <p>Exercise from Eloquent JavaScript</p>
+    <p>Write a function, deepEqual, that takes two values and returns true only
+      if they are the same value or are objects with the same properties whose
+      values are also equal when compared with a recursive call to deepEqual.
+      (Note that typeof null produces "object")</p>
+    <p>-- Exercise below --</p>
+
+    <div id="solution"></div>
+
+    <p>My code:</p>
+    <pre><code>  <!-- replace < with &lt; and > with &gt; -->
+      &lt;script&gt;
+        function deepEqual(a, b) {
+          let countA = 0;
+          let countB = 0;
+
+          if (typeof(a) !== 'object' || typeof(b) !== 'object' || a === null || b === null) {     // non-object type
+            return a === b;
+          } else {     // object type
+            for(let propertyA in a) {
+              countA++;     // how many properties in a
+            }
+            for(let propertyB in b) {
+              countB++;     // how many properties in b
+              if (!(propertyB in a) || !deepEqual(a[propertyB], b[propertyB])) {
+                countB = countA + 1;     // the final evaluation is countA === countB, so if this triggers, the function will return false
+              }
+            }
+            return countA === countB;
+          }
+        }
+      &lt;/script&gt;
+    </code></pre>
+
+
+    <script>
+      function deepEqual(a, b) {
+        let countA = 0;
+        let countB = 0;
+
+        if (typeof(a) !== 'object' || typeof(b) !== 'object' || a === null || b === null) {     // non-object type
+          return a === b;
+        } else {     // object type
+          for(let propertyA in a) {
+            countA++;     // how many properties in a
+          }
+          for(let propertyB in b) {
+            countB++;     // how many properties in b
+            if (!(propertyB in a) || !deepEqual(a[propertyB], b[propertyB])) {
+              countB = countA + 1;     // the final evaluation is countA === countB, so if this triggers, the function will return false
+            }
+          }
+          return countA === countB;
+        }
+      }
+    </script>
+  </body>
+</html>
